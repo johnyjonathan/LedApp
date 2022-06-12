@@ -4,7 +4,7 @@ from django.contrib.auth import login, logout, authenticate
 from LedApp import utilities
 def loginView(request):
     if request.user.is_authenticated:
-        return redirect('main')
+        return redirect('mainView')
     else:
         if request.method == "GET":
             return render(request, 'login.html')
@@ -37,7 +37,17 @@ def mainView(request):
                 set_color = utilities.setColor(rgb_col,brightness)
                 print(set_color)
                 return render(request,'main.html')
-            else:
-                pass
+            
+            elif request.POST.get('mode1'):
+                brightness = 0.5
+                utilities.trainstion(brightness,20)
+                return render(request,'main.html')
+            
+            elif request.POST.get('mode2'):
+                brightness = 0.5
+                utilities.rainbow_cycle(0.001,brightness)
+                return render(request,'main.html')
+
+                
     else:
         return redirect('loginView')
