@@ -67,7 +67,7 @@ def trainstion(brightness,t):
         blue = 255 * (0.5 * (1 + math.sin((t*math.pi)-(math.pi/2))))
         green = 0
         red = 255 - blue
-        RGBtriplet = (red, green, blue)
+        RGBtriplet = (int(red), int(green), int(blue))
         pixels.fill(RGBtriplet)
         pixels.show()
         time.sleep(0.5)
