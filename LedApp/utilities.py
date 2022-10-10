@@ -10,8 +10,16 @@ ORDER = neopixel.GRB
 
 
 def setColor(rgb,brightness):
+
     num_from_db = settings.objects.get(name="led_strip")
     num_of_pixels = int(num_from_db.led_num)
+    max_num_of_pixels = int(num_from_db.max_led_num)
+    pixels = neopixel.NeoPixel(
+        pixel_pin,max_num_of_pixels, brightness = float(brightness), auto_write = False, pixel_order = ORDER
+    )
+
+    pixels.fill((0,0,0))
+    pixels.show()
 
     pixels = neopixel.NeoPixel(
         pixel_pin,num_of_pixels, brightness = float(brightness), auto_write = False, pixel_order = ORDER
