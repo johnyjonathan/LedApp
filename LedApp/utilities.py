@@ -7,10 +7,11 @@ from LedApp.models import settings
 
 pixel_pin = board.D18
 ORDER = neopixel.GRB
-num_from_db = settings.objects.get(name="led_strip")
-num_of_pixels = int(num_from_db.led_num)
+
 
 def setColor(rgb,brightness):
+    num_from_db = settings.objects.get(name="led_strip")
+    num_of_pixels = int(num_from_db.led_num)
 
     pixels = neopixel.NeoPixel(
         pixel_pin,num_of_pixels, brightness = float(brightness), auto_write = False, pixel_order = ORDER
