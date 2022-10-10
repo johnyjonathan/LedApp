@@ -6,7 +6,7 @@ from LedApp.models import settings
 
 
 pixel_pin = board.D18
-ORDER = neopixel.GRB
+ORDER = neopixel.RGB
 num_from_db = settings.objects.get(name="led_strip")
 num_of_pixels = int(num_from_db.led_num)
 
